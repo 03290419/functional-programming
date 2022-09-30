@@ -42,3 +42,20 @@ console.log(
         )
     )
 );
+
+var under_30 = (u) => u.age < 30;
+var over_30 = (u) => u.age >= 30;
+console.log(log_length(map(filter(users, under_30), (u) => u.age)));
+console.log(log_length(map(filter(users, over_30), (u) => u.name)));
+
+var age = (list) => map(list, (v) => v.age);
+var names = (list) => map(list, (v) => v.name);
+console.log(log_length(ages(filter(users, under_30))));
+console.log(log_length(ages(filter(users, over_30))));
+
+function bvalues(key) {
+    var value = bvalue(key);
+    return function (list) {
+        return map(list, value);
+    };
+}
