@@ -10,3 +10,25 @@ function bvalue(key) {
 }
 bvalue('a')({ a: 'hi', b: 'hello' });
 console.log(bvalue('a')({ a: 'hi', b: 'hello' }));
+
+console.log(
+    log_length(
+        map(
+            filter(users, function (user) {
+                return user.age < 30;
+            }),
+            bvalue('age')
+        )
+    )
+);
+
+console.log(
+    log_length(
+        map(
+            filter(users, function (user) {
+                return user.age >= 30;
+            }),
+            bvalue('name')
+        )
+    )
+);
