@@ -18,7 +18,7 @@ function User(id, name, age) {
     };
 }
 
-var users2 = [
+export var users2 = [
     new User(1, 'ID', 32),
     new User(2, 'HA', 25),
     new User(3, 'BJ', 32),
@@ -27,4 +27,3 @@ var users2 = [
     new User(6, 'JM', 32),
     new User(7, 'HI', 24),
 ];
-console.log(findBy('age', users2, 25));
