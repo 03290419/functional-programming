@@ -21,32 +21,23 @@ function map(list, iteratee) {
     }
     return new_list;
 }
-function log_length(value) {
-    console.log(value.length);
-    return value;
-}
-console.log(
-    log_length(
-        map(
-            filter(users, function (user) {
-                return user.age < 30;
-            }),
-            function (user) {
-                return user.age;
-            }
-        )
-    )
-);
 
-console.log(
-    log_length(
-        map(
-            filter(users, function (user) {
-                return user.age >= 30;
-            }),
-            function (user) {
-                return user.name;
-            }
-        )
-    )
-);
+var users_under_30 = filter(users, function (user) {
+    return user.age < 30;
+});
+console.log(users_under_30.length);
+
+var ages = map(users_under_30, function (user) {
+    return user.age;
+});
+console.log(ages);
+
+var users_over_30 = filter(users, function (user) {
+    return user.age >= 30;
+});
+console.log(users_over_30.length);
+
+var names = map(users_over_30, function (user) {
+    return user.name;
+});
+console.log(names);

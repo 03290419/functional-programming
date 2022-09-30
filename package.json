@@ -17,5 +17,8 @@
     "bugs": {
         "url": "https://github.com/batkeng/functional-programming/issues"
     },
-    "homepage": "https://github.com/batkeng/functional-programming#readme"
+    "homepage": "https://github.com/batkeng/functional-programming#readme",
+    "dependencies": {
+        "underscore": "^1.13.6"
+    }
 }
