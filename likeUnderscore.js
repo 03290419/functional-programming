@@ -36,7 +36,7 @@ console.log(
 );
 
 console.clear();
-const compose = function () {
+export const compose = function () {
     var args = arguments;
     var start = args.length - 1;
     return function () {
@@ -47,11 +47,5 @@ const compose = function () {
     };
 };
 
-var greet = function (name) {
-    return 'hi:' + name;
-};
-var exclaim = function (statement) {
-    return statement.toUpperCase() + '!';
-};
-var welcome = compose(greet, exclaim);
-console.log(welcome('moe!'));
+const some = compose(not, not, positive);
+const every = compose(beg(-1), negativeIndex);

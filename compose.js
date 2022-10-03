@@ -4,17 +4,10 @@ const compose = function () {
     return function () {
         var i = start;
         var result = args[start].apply(this, arguments);
-        console.log(
-            args[0],
-            arguments,
-            args[0].apply(this, arguments),
-            args[1]
-        );
         while (i--) {
             console.log(i);
             result = args[i].call(this, result);
         }
-        console.log(result);
         return result;
     };
 };
@@ -27,4 +20,3 @@ var exclaim = function (statement) {
 };
 var welcome = compose(greet, exclaim);
 welcome('moe!');
-// console.log(welcome('moe!'));
