@@ -16,11 +16,17 @@ const truthy = function (v) {
     return !!v;
 };
 
+function positive(list) {
+    return find(list, identity);
+}
+function negativeIndex(list) {
+    return findIndex(list, not);
+}
 const some = function (list) {
-    return !!find(list, identity);
+    return not(not(positive(list)));
 };
 const every = function (list) {
-    return beg(-1)(findIndex(list, not));
+    return beg(-1)(negativeIndex(list));
 };
 
 console.clear();
