@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+            integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js"
+            integrity="sha512-2V49R8ndaagCOnwmj8QnbT1Gz/rie17UouD9Re5WxbzRVUGoftCu5IuqqtAM9+UC3fwfHCSJR1hkzNQh/2wdtg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="user-list"></div>
+        <script>
+            var users = [
+                { id: 1, name: 'HA', age: 25 },
+                { id: 2, name: 'PJ', age: 28 },
+                { id: 3, name: 'JE', age: 27 },
+            ];
+            //1. 흔한 클로저 실수 - 어떤 버튼을 클릭해도 JE
+            var buttons = [];
+            for (var i = 0; i < users.length; i++) {
+                var user = users[i];
+                buttons.push(
+                    $('<button>')
+                        .text(user.name)
+                        .click(function () {
+                            console.log(user.name);
+                        })
+                );
+            }
+            $('.user-list').append(buttons);
+            //2. 절차지향적 해결 = 어차피 함수의 도움을 받아야 함, 각각 다른 이름이 잘 나옴
+            var buttons = [];
+            for (var i = 0; i < users.length; i++) {
+                (function (user) {
+                    buttons.push(
+                        $('<button>')
+                            .text(user.name)
+                            .click(function () {
+                                console.log(user.name);
+                            })
+                    );
+                })(users[i]);
+            }
+            $('.user-list').append(buttons);
+            //3. 함수적 해결 - 깔끔한 코드는 덤
+            $('.user-list').append(
+                _.map(users, function (user) {
+                    return $('<button>')
+                        .text(user.name)
+                        .click(function () {
+                            console.log(user.name);
+                        });
+                    return button;
+                })
+            );
+        </script>
+    </body>
+</html>

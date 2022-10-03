@@ -47,5 +47,23 @@ export const compose = function () {
     };
 };
 
-const some = compose(not, not, positive);
-const every = compose(beg(-1), negativeIndex);
+export const some = compose(not, not, positive);
+export const every = compose(beg(-1), negativeIndex);
+
+function not(v) {
+    return !v;
+}
+function beg(a) {
+    return function (b) {
+        return a === b;
+    };
+}
+function positive(list) {
+    return find(list, identity);
+}
+function negativeIndex(list) {
+    return findIndex(list, not);
+}
+const identity = function (v) {
+    return v;
+};
