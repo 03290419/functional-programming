@@ -1,23 +1,23 @@
-const map = function (list, iteratee) {
+export const map = function (list, iteratee) {
     var new_list = [];
     for (var i = 0, len = list.length; i < len; i++) {
         new_list.push(iteratee(list[i], i, list));
     }
     return new_list;
 };
-const filter = function (list, predicate) {
+export const filter = function (list, predicate) {
     var new_list = [];
     for (var i = 0, len = list.length; i < len; i++) {
         if (predicate(list[i], i, list)) new_list.push(list[i]);
     }
     return new_list;
 };
-const find = function (list, predicate) {
+export const find = function (list, predicate) {
     for (var i = 0, len = list.length; i < len; i++) {
         if (predicate(list[i], i, list)) return list[i];
     }
 };
-const findIndex = function (list, predicate) {
+export const findIndex = function (list, predicate) {
     for (var i = 0, len = list.length; i < len; i++) {
         if (predicate(list[i], i, list)) return i;
     }
