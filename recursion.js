@@ -27,3 +27,4 @@ function flatten3(arr, new_arr) {
     });
     return new_arr;
 }
+flatten3([1, [2], [3, 4]]); // 사용부는 flatten과 비슷해짐
