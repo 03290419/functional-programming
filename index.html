@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function test(a, b, c) {
+        console.log("a,b,c:", a, b, c);
+        console.log("this:", this);
+        console.log("arguments", arguments);
+      }
+      test.call(undefined, 1, 2, 3);
+      test.call(null, 1, 2, 3);
+      test.call(void 0, 1, 2, 3);
+      var o1 = { name: "obj" };
+      o1.test = test;
+      test.call(o1, 3, 2, 1);
+      test.call(1000, 3, 2, 1);
+      console.clear();
+      o1.test.call(undefined, 3, 2, 1);
+      o1.test.call([50], 3, 2, 1);
+      console.clear();
+      test.apply(o1, [3, 2, 1]);
+      test.apply(1000, [3, 2, 1]);
+      o1.test.apply(undefined, [3, 2, 1]);
+      o1.test.apply([50], [3, 2, 1]);
+      console.clear();
+      test.apply(o1, { 0: 3, 1: 2, 2: 1, length: 3 });
+      (function () {
+        test.apply(1000, arguments);
+      })(3, 2, 1);
+      console.clear();
+      (function () {
+        arguments.length--;
+        test.apply(1000, arguments);
+      })(3, 2, 1);
+      test.apply(1000, [1].concat([2, 3]));
+      console.clear();
+      var slice = Array.prototype.slice;
+      function toArray(data) {
+        return slice.call(data);
+      }
+      function rest(data, n) {
+        return slice.call(data, n || 1);
+      }
+      var arr1 = toArray({ 0: 1, 1: 2, length: 2 });
+      arr1.push(3);
+      console.log(arr1);
+      console.log(rest([1, 2, 3]));
+      console.log(rest([1, 2, 3], 2));
+    </script>
+  </body>
+</html>
