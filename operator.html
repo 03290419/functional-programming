@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function addFriend(u1, u2) {
+        if (u1.friends.indexOf(u2) == -1) {
+          if (confirm("친구로 추가할까요?")) {
+            u1.freinds.push(u2);
+            alert("추가되었습니다.");
+          }
+        } else {
+          alert("이미 친구입니다.");
+        }
+      }
+      var pj = { name: "PJ", friends: [] };
+      var ha = { name: "HA", friends: [] };
+      console.log(addFriend(pj, ha));
+      console.log(addFriend(pj, ha));
+      function addFriend2(u1, u2) {
+        (u1.friends.indexOf(u2) == -1 || alert("이미 친구입니다.")) &&
+          confirm("친구로 추가할까요?") &&
+          u1.friends.push(u2) &&
+          alert("추가되었습니다.");
+      }
+      var pj = { name: "PJ", friends: [] };
+      var ha = { name: "HA", friends: [] };
+      console.log(addFriend2(pj, ha));
+      console.log(addFriend2(pj, ha));
+    </script>
+  </body>
+</html>
