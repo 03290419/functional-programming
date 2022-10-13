@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js"
+            integrity="sha512-2V49R8ndaagCOnwmj8QnbT1Gz/rie17UouD9Re5WxbzRVUGoftCu5IuqqtAM9+UC3fwfHCSJR1hkzNQh/2wdtg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+    </head>
+    <body>
+        <script>
+            console.log(
+                _.each([1, 2, 3], function (val, idx, list) {
+                    console.log(val, idx, list);
+                })
+            );
+
+            console.log(
+                [1, 2, 3].forEach(function (val, idx, list) {
+                    console.log(val, idx, list);
+                })
+            );
+            _.each({ a: 1, b: 2 }, function (val, key, obj) {
+                console.log(val, key, obj);
+            });
+            console.clear();
+        </script>
+    </body>
+</html>
